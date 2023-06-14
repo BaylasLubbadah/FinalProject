@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Converter</title>
+    <link rel="stylesheet" href="Converter.css">
+</head>
+<body>
+    <header>
+        <h2 class="logo">Quarter Moon</h2>
+        <nav class="navigation">
+            <a href="HomePage.html">Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Unit Converter</h1>
+    
+        <fieldset>
+          <legend>Conversion Options</legend>
+    
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="conversion" value="temperature" checked>
+              Fahrenheit to Celsius
+            </label>
+            <label>
+              <input type="radio" name="conversion" value="lengthKmToMi">
+              Kilometers to Miles
+            </label>
+            <label>
+              <input type="radio" name="conversion" value="lengthMToFt">
+              Meters to Feet
+            </label>
+          </div>
+    
+          <div class="input-group">
+            <input type="number" id="valueInput" placeholder="Enter value to convert">
+            <button onclick="convert()">Convert</button>
+          </div>
+    
+          <div class="result" id="resultContainer"></div>
+        </fieldset>
+    </div>
+    <script>
+        function convert() {
+          var conversionType = document.querySelector('input[name="conversion"]:checked').value;
+          var value = parseFloat(document.getElementById('valueInput').value);
+          var result;
+    
+          if (conversionType === 'temperature') {
+            result = (value - 32) * (5 / 9);
+            document.getElementById('resultContainer').innerText = value + "°F is " + result.toFixed(2) + "°C";
+          } else if (conversionType === 'lengthKmToMi') {
+            result = value * 0.621371;
+            document.getElementById('resultContainer').innerText = value + " km is " + result.toFixed(2) + " miles";
+          } else if (conversionType === 'lengthMToFt') {
+            result = value * 3.28084;
+            document.getElementById('resultContainer').innerText = value + " meters is " + result.toFixed(2) + " feet";
+          }
+        }
+    </script>
+
+    <footer>
+        <i class="fa-solid fa-copyright">2023 Copyright:Quarter Moon/Baylas</i>
+    </footer>
+    
+
+</body>
+</html>
